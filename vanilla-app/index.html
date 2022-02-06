@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background: #242424;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin-top: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .textInput {
+      width: 270px;
+      height: 48px;
+      font-family: "Poppins", sans-serif;
+      border: 1px solid #dbdcdd;
+      margin: 0 2rem;
+      border-radius: 5px;
+    }
+
+    .textInput:hover {
+      border: 1px solid #0b2d71;
+      box-shadow: 0 0 5pt 0.5pt #d3d3d3;
+    }
+    .textInput:focus {
+      box-shadow: 0 0 5pt 2pt #d3d3d3;
+      outline-width: 0px;
+    }
+    .button {
+      font-family: "Poppins", sans-serif;
+      width: 172px;
+      height: 48px;
+      background: #0066b2 0% 0% no-repeat padding-box;
+      color: #fff;
+      border: none;
+      letter-spacing: 0.02px;
+      font-size: 16px;
+    }
+    .button:hover {
+      background: #009dd9 0% 0% no-repeat padding-box;
+      cursor: pointer;
+    }
+
+    .list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #todos {
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <form>
+        <input name="todo" type="text" class="textInput" />
+        <input type="submit" value="Add Todo" class="button" />
+      </form>
+    </div>
+    <div class="list">
+      <ul id="todos"></ul>
+    </div>
+
+    <script>
+      // Get DOM elements
+      const form = document.querySelector("form");
+      const input = document.querySelector("[name='todo']");
+      const todoList = document.getElementById("todos");
+
+      // Side Effects / Lifecycle
+
+      const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
+
+      const todoData = [];
+
+      existingTodos.forEach((todo) => {
+        addTodo(todo);
+      });
+
+      function addTodo(todoText) {
+        todoData.push(todoText);
+        const li = document.createElement("li");
+        li.innerHTML = todoText;
+        todoList.appendChild(li);
+        localStorage.setItem("todos", JSON.stringify(todoData));
+        input.value = "";
+      }
+
+      // Events
+      form.onsubmit = (event) => {
+        event.preventDefault();
+        addTodo(input.value);
+      };
+    </script>
+  </body>
+</html>
