@@ -11,16 +11,16 @@ export class AppComponent implements OnInit {
   title = 'angular-app';
   textInput!: string;
   todoList: string[] = [];
-  existingTodos: string[] | undefined;
+  existingTodos: string[] = [];
 
   ngOnInit() {
+    this.existingTodos = JSON.parse(localStorage.getItem("todos")!)
   }
 
   onSubmit(): void {
     console.log(this.textInput);
     // push vs concat
     this.todoList = this.todoList.concat(this.textInput)
-    localStorage.setItem("token", JSON.stringify(this.todoList));
+    localStorage.setItem("todos", JSON.stringify(this.todoList));
   }
-
 }

@@ -13,6 +13,7 @@
 </div>
 <div class="list">
   <ul id="todos">
+    <li *ngFor="let item of existingTodos">{{ item }}</li>
     <li *ngFor="let item of todoList">{{ item }}</li>
   </ul>
 </div>
