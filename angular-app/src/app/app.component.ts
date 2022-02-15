@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToDo } from './todo-model';
 
 @Component({
@@ -7,15 +7,20 @@ import { ToDo } from './todo-model';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular-app';
+  textInput!: string;
+  todoList: string[] = [];
+  existingTodos: string[] | undefined;
 
-  ngOnInit() { }
-
-  public todoList: ToDo[] = [];
-
-  addTodo() {
-    this.todoList.push(new ToDo());
+  ngOnInit() {
   }
-}
 
+  onSubmit(): void {
+    console.log(this.textInput);
+    // push vs concat
+    this.todoList = this.todoList.concat(this.textInput)
+    localStorage.setItem("token", JSON.stringify(this.todoList));
+  }
+
+}

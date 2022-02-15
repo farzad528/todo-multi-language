@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background: #242424;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 48px;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  text-align: center;
+}
