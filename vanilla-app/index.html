@@ -18,6 +18,12 @@
       margin: 0;
       padding: 0;
     }
+    h1 {
+      font-size: 48px;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      text-align: center;
+    }
 
     .container {
       margin-top: 40vh;
@@ -69,9 +75,15 @@
     }
   </style>
   <body>
+    <h1>Vanilla ToDo</h1>
     <div class="container">
       <form>
-        <input name="todo" type="text" class="textInput" placeholder="what needs to be done?" />
+        <input
+          name="todo"
+          type="text"
+          class="textInput"
+          placeholder="what needs to be done?"
+        />
         <input type="submit" value="Add Todo" class="button" />
       </form>
     </div>
